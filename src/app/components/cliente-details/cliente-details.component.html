@@ -1,0 +1,136 @@
+<div *ngIf="viewMode; else editable" class="mt-3">
+  <div *ngIf="currentCliente.id">
+    <h4>Cliente</h4>
+    <div>
+      <label><strong>Nome:</strong></label> {{ currentCliente.nome }}
+    </div> 
+    <div>
+      <label><strong>E-mail:</strong></label>
+      {{ currentCliente.email }}
+    </div>
+    <div>
+      <label><strong>Telefone:</strong></label>
+      {{ currentCliente.telefone }}
+    </div>
+    <div>
+      <label><strong>Cidade:</strong></label>
+      {{ currentCliente.cidade }}
+    </div>
+    <div>
+      <label><strong>Empresa:</strong></label>
+      {{ currentCliente.empresa }}
+    </div>
+    <div>
+      <label><strong>Status:</strong></label>
+      {{ currentCliente.visivel ? "Disponível" : "Contatado" }}
+    </div>
+
+    <a
+      class="btn btn-success" 
+      (click)="updatePublished(false)"
+    >
+      Contato Realizado
+    </a>
+  </div>
+
+  <div *ngIf="!currentCliente">
+    <br />
+    <p>Please click on a Cliente...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentCliente.id" class="edit-form mt-3">
+    <h4>Cliente</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Nome</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nome"
+          [(ngModel)]="currentCliente.nome"
+          name="nome"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">E-mail</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          [(ngModel)]="currentCliente.email"
+          name="email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Telefone</label>
+        <input
+          type="text"
+          class="form-control"
+          id="telefone"
+          [(ngModel)]="currentCliente.telefone"
+          name="telefone"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Cidade</label>
+        <input
+          type="text"
+          class="form-control"
+          id="cidade"
+          [(ngModel)]="currentCliente.cidade"
+          name="cidade"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Empresa</label>
+        <input
+          type="text"
+          class="form-control"
+          id="empresa"
+          [(ngModel)]="currentCliente.empresa"
+          name="empresa"
+        />
+      </div>
+
+      <div class="form-group">
+        <label><strong>Status:</strong></label>
+        {{ currentCliente.visivel ? "Disponível" : "Contatado" }}
+      </div>
+    </form>
+
+    <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentCliente.visivel"
+      (click)="updatePublished(false)"
+    >
+      UnPublish
+    </button>
+    <button
+      *ngIf="!currentCliente.visivel"
+      class="badge badge-primary mr-2"
+      (click)="updatePublished(true)"
+    >
+      Publish
+    </button>
+
+    <button class="badge badge-danger mr-2" (click)="deleteCliente()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateCliente()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentCliente.id">
+    <br />
+    <p>Cannot access this Cliente...</p>
+  </div>
+</ng-template>

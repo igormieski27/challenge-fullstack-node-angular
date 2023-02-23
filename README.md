@@ -1,4 +1,3 @@
-
 Objetivo:
 
 O objetivo desse desafio é demonstrar sua experiência, conhecimento e criatividade como desenvolvedor, assim teremos uma noção de como você pensa e como resolve problemas na vida real.
@@ -16,7 +15,6 @@ A página onde os clientes irão fazer o seu cadastro deve ser simples e de fác
 A área interna da plataforma deve ter autenticação, para que as informações cadastradas não sejam públicas.
 
 Inicialmente, todos os vendedores podem fazer negócio com todos os clientes, mas depois que um vendedor assumir um negócio para ele, o mesmo não pode ser visível para os outros vendedores
-
 
 Requisitos técnicos:
 

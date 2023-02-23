@@ -1,0 +1,48 @@
+<div>
+    <div class="submit-form">
+      <div class="text-center">
+        <h2 >Cadastro</h2>
+        <h4 style="color:darkgrey">- Área Interna -</h4>
+      </div>
+      <div style="font-size:large">
+        <div class="form-group">
+          <label for="nome">Nome do Funcionário:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nome"
+            required
+            [(ngModel)]="funcionario.nome"
+            name="tinometle"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input
+            class="form-control"
+            id="email"
+            required
+            [(ngModel)]="funcionario.email"
+            name="email"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="telefone">Senha:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="telefone"
+            required
+            [(ngModel)]="funcionario.senha"
+            name="telefone"
+          />
+        </div>
+  
+  
+        <a routerLink="/login"><button (click)="saveFuncionario()" class="btn btn-success btn-md mt-1" style="width:100%;">Realizar Cadastro</button></a>
+      </div>
+  </div>
+  
+  

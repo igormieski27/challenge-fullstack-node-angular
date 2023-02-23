@@ -1,0 +1,41 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Pesquisar por nome"
+        [(ngModel)]="nome"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          (click)="searchTitle()"
+        >
+          🔎
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Lista de clientes cadastrados</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let cliente of clientes; let i = index"
+        [hidden] = "!cliente.visivel"
+        [class.active]="i == currentIndex"
+        (click)="setActiveCliente(cliente, i)"
+      >
+        {{ cliente.nome }}
+      </li>
+    </ul>
+
+  </div>
+  <div class="col-md-6">
+    <app-cliente-details
+      [viewMode]="true"
+      [currentCliente]="currentCliente"
+    ></app-cliente-details>
+  </div>
+</div>
