@@ -22,14 +22,15 @@
     </div>
     <div>
       <label><strong>Status:</strong></label>
-      {{ currentCliente.visivel ? "Disponível" : "Contatado" }}
+      {{ currentCliente.idFuncionario ? "Cliente já contatado" : "Disponível para contato" }}
     </div>
 
     <a
       class="btn btn-success" 
       (click)="updatePublished(false)"
+      [hidden]="currentCliente.idFuncionario"
     >
-      Contato Realizado
+      Realizar Contato
     </a>
   </div>
 

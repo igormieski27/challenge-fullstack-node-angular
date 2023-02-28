@@ -6,4 +6,6 @@ export class Cliente {
   cidade?: string;
   empresa?: string;
   visivel?: boolean;
+  idFuncionario?: any;
+  contatado?: boolean;
 }

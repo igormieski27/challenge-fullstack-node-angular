@@ -8,7 +8,8 @@
     <a href="#" class="navbar-brand">Lead<b>Finder</b></a>
     <div class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a routerLink="login" class="nav-link">Área Interna</a>
+        <a (click)="deslogar()" routerLink="login" class="nav-link" style="float:right;">{{ opcao }}</a>
+        
       </li>
     </div>
   </nav>

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgxMaskModule } from 'ngx-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddClienteComponent } from './components/add-cliente/add-cliente.component';
@@ -12,6 +12,7 @@ import { AddFuncionarioComponent } from './components/add-funcionario/add-funcio
 import { LoginFuncionarioComponent } from './components/login-funcionario/login-funcionario.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,13 +20,15 @@ import { LoginFuncionarioComponent } from './components/login-funcionario/login-
     ClienteDetailsComponent,
     ClientesListComponent,
     AddFuncionarioComponent,
-    LoginFuncionarioComponent
+    LoginFuncionarioComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

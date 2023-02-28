@@ -6,5 +6,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-14-crud-example';
+  title = 'Angular14';
+  opcao = 'Área Interna';
+  usuario = {id: 0};
+  ngOnInit(): void { 
+    const funcionarioStr = localStorage.getItem('Funcionario');
+    if (funcionarioStr){
+      this.usuario = JSON.parse(funcionarioStr);
+    }
+    if(this.usuario.id > 0){
+      this.opcao = 'Desconectar';
+    }else{
+      this.opcao = 'Área Interna';
+    }
+  }
+  deslogar(): void{
+    localStorage.setItem('Funcionario', "");
+    this.opcao = 'Área Interna';
+  }
 }

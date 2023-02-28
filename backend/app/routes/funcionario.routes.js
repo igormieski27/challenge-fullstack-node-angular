@@ -12,6 +12,8 @@ module.exports = app => {
     // Retrieve a single Funcionario with email
     router.get("/:email", funcionarios.findOneEmail);
   
+    router.post("/login", funcionarios.login)
+    
     app.use("/api/funcionarios", router);
   };
   

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Funcionario } from 'src/app/models/funcionario.model';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
 
+
 @Component({
   selector: 'app-add-funcionario',
   templateUrl: './add-funcionario.component.html',
@@ -25,7 +26,7 @@ export class AddFuncionarioComponent {
       email: this.funcionario.email,
       senha: this.funcionario.senha
     };
-    
+    console.log(data);
     this.funcionarioService.create(data)
       .subscribe({
         

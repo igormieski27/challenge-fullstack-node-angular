@@ -1,15 +1,17 @@
 <div>
+  <form (submit)="onSubmit()">
     <div class="text-center">
         <h2 >Login</h2>
         <h4 style="color:darkgrey">Área Interna</h4>
     </div>
+    
     <div class="form-group">
         <label for="email">E-mail</label>
         <input
           class="form-control" 
           id="email"
           required
-
+          [(ngModel)]="email"
           name="email"
         />
       </div>
@@ -20,11 +22,14 @@
           class="form-control"
           id="telefone"
           required
+          [(ngModel)]="senha"
           type="password"
           name="telefone"
         />
       </div>
-
-      <button routerLink="../clientes" class="btn btn-success btn-md mt-1" style="width:100%;"> Login </button>
+      <div *ngIf="erro" class="alert alert-danger text-center">E-mail ou senha incorretos!</div>
+      <!-- <button routerLink="../clientes" class="btn btn-success btn-md mt-1" style="width:100%;"> Login </button>-->
+      <button type="submit" class="btn btn-success btn-md mt-1" style="width:100%;"> Login </button>
       <a routerLink="../cadastro"><button class="btn btn-success btn-md mt-1" style="width:100%; background-color:white !important; color:#FF6605"> Cadastre-se </button></a>
-</div>
+    </form>
+    </div>

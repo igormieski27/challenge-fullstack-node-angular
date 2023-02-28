@@ -2,6 +2,7 @@ import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cliente } from 'src/app/models/cliente.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-cliente-details',
@@ -19,19 +20,27 @@ export class ClienteDetailsComponent implements OnInit {
     empresa: '',
     visivel: false
   };
-  
+  usuario = {id : 0, nome: ""};
+  clientesUsuario = [];
   message = '';
-
+  sucMsg = '';
+  
   constructor(
     private clienteService: ClienteService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location
     ) { }
   
   ngOnInit(): void {
     if (!this.viewMode) {
       this.message = '';
       this.getCliente(this.route.snapshot.params["id"]);
+    }
+    const funcionarioStr = localStorage.getItem('Funcionario');
+    console.log(funcionarioStr);
+    if (funcionarioStr){
+      this.usuario = JSON.parse(funcionarioStr);
     }
   }
 
@@ -52,7 +61,8 @@ export class ClienteDetailsComponent implements OnInit {
       email: this.currentCliente.email,
       telefone: this.currentCliente.telefone,
       cidade: this.currentCliente.cidade,
-      empresa: this.currentCliente.empresa
+      empresa: this.currentCliente.empresa,
+      idFuncionario: this.usuario.id
     };
 
     this.message = '';
@@ -62,14 +72,18 @@ export class ClienteDetailsComponent implements OnInit {
         next: (res) => {
           console.log(res);
           this.currentCliente.visivel = status;
+          const nome = this.currentCliente.nome;
           this.currentCliente ={ nome: '',
           email: '',
-          telefone: '',
+          telefone: '', 
           cidade: '',
           empresa: '',
           visivel: false
         };
           this.message = res.message ? res.message : 'The status was updated successfully!';
+          this.location.go(this.location.path());
+          window.location.reload();
+          alert('Você contatou '+nome+' com sucesso!');
         },
         error: (e) => console.error(e)
       });
@@ -83,6 +97,7 @@ export class ClienteDetailsComponent implements OnInit {
         next: (res) => {
           console.log(res);
           this.message = res.message ? res.message : 'This cliente was updated successfully!';
+
         },
         error: (e) => console.error(e)
       });
