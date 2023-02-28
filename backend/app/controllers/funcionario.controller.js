@@ -33,7 +33,7 @@ exports.create = (req, res) => {
 
   // Save Funcionario in the database
   Funcionario.create(funcionario)
-    .then(data => {
+    .then(data => { 
       res.send(data);
     })
     .catch(err => {
